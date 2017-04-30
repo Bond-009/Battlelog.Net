@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <Authors>Bond_009</Authors>
-    <PackageId>Battlelog.Net.BfH</PackageId>
+    <PackageId>Battlelog.Net.Bf3</PackageId>
     <Version>0.1.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Label="Configuration">
-    <AssemblyName>Battlelog.Net.BfH</AssemblyName>
-    <DocumentationFile>bin\Release\Battlelog.Net.BfH.xml</DocumentationFile>
+    <AssemblyName>Battlelog.Net.Bf3</AssemblyName>
+    <DocumentationFile>bin\Release\Battlelog.Net.Bf3.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 

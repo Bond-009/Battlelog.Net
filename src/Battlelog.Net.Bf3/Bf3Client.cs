@@ -7,13 +7,13 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Battlelog.Bf4
+namespace Battlelog.Bf3
 {
-    public class Bf4Client : IDisposable
+    public class Bf3Client : IDisposable
     {
         HttpClient httpClient = new HttpClient();
 
-        public Bf4Client() => httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
+        public Bf3Client() => httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
 
         /// <summary>
         /// Returns the Persona ID from the player.
@@ -23,8 +23,8 @@ namespace Battlelog.Bf4
         public async Task<long?> GetPersonaID(string playername)
         {
             // Extract the persona id
-            Match pid = Regex.Match(await httpClient.GetStringAsync("/bf4/user/" + playername),
-                $@"bf4/soldier/{playername}/stats/(?<id>\d+)",
+            Match pid = Regex.Match(await httpClient.GetStringAsync("/bf3/user/" + playername),
+                $@"bf3/soldier/{playername}/stats/(?<id>\d+)",
                 RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
             if (!pid.Success) return null;
@@ -33,15 +33,16 @@ namespace Battlelog.Bf4
         }
 
         /// <summary>
-        /// Returns detailed stats about a player.
+        /// Returns stats about a player.
         /// </summary>
-        /// <returns>Returns detailed stats about a player.</returns>
-        public async Task<DetailedStats> GetDetailedStatsAsync(Platform platform, long PlayerID)
+        /// <returns>Returns stats about a player.</returns>
+        public async Task<Stats> GetStatsAsync(Platform platform, long PlayerID)
         {
             return await await Task.Factory.StartNew(async () =>
-                JsonConvert.DeserializeObject<Response<DetailedStats>>(
-                    await GetStringAsync(Endpoints.DetailedStats,
+                JsonConvert.DeserializeObject<Response<Stats>>(
+                    await GetStringAsync(Endpoints.Stats,
                         PlayerID.ToString(),
+                        "bf3-us-recon",
                         ((int)platform).ToString()
             )).Data);
         }
