@@ -7,13 +7,13 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Battlelog.BfH
+namespace Battlelog.Bf4
 {
-    public class BfHClient : IDisposable
+    public class Bf4Client : IDisposable
     {
         HttpClient httpClient = new HttpClient();
 
-        public BfHClient() => httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
+        public Bf4Client() => httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
 
         /// <summary>
         /// Returns the Persona ID from the player.

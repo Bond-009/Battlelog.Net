@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../../src/Battlelog.Net.BfH/Battlelog.Net.BfH.csproj" />
+    <ProjectReference Include="../../src/Battlelog.Net.Bf4/Battlelog.Net.Bf4.csproj" />
   </ItemGroup>
 
 </Project>

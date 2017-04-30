@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>Bond_009</Authors>
+    <PackageId>Battlelog.Net.Bf4</PackageId>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration">
+    <AssemblyName>Battlelog.Net.Bf4</AssemblyName>
+    <DocumentationFile>bin\Release\Battlelog.Net.Bf4.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Battlelog.Net\Battlelog.Net.csproj" />
+  </ItemGroup>
+
+</Project>
