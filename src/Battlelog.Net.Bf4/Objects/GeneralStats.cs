@@ -68,7 +68,7 @@ namespace Battlelog.Bf4
         public int Score { get; set; }
         [JsonProperty("kitTimesInPercentage")]
         [JsonRequired]
-        public KitTimesInPercentage KitTimesInPercentage { get; set; }
+        public KitValue<double> KitTimesInPercentage { get; set; }
         [JsonProperty("timePlayed")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
         [JsonRequired]
@@ -81,7 +81,7 @@ namespace Battlelog.Bf4
         public int EngineerKills { get; set; }
         [JsonProperty("kitScores")]
         [JsonRequired]
-        public KitScores KitScores { get; set; }
+        public KitValue<int> KitScores { get; set; }
         [JsonProperty("suppressionAssists")]
         [JsonRequired]
         public int SuppressionAssists { get; set; }
@@ -107,7 +107,9 @@ namespace Battlelog.Bf4
         [JsonProperty("shotsHit")]
         [JsonRequired]
         public int ShotsHit { get; set; }
-        // TODO: serviceStarGameModes
+        [JsonProperty("ServiceStarsGameModes")]
+        [JsonRequired]
+        public List<ServiceStar> ServiceStarsGameModes { get; set; }
         [JsonProperty("numLosses")]
         [JsonRequired]
         public int Losses { get; set; }
@@ -115,7 +117,9 @@ namespace Battlelog.Bf4
         [JsonProperty("engineer")]
         [JsonRequired]
         public int EngineerScore { get; set; }
-        // TODO: serviceStarsProgress
+        [JsonProperty("serviceStarsProgress")]
+        [JsonRequired]
+        public KitValue<double> ServiceStarsProgress { get; set; }
         [JsonProperty("conquest")]
         [JsonRequired]
         public int ConquestScore { get; set; }
@@ -192,7 +196,7 @@ namespace Battlelog.Bf4
         public int VehicleDamage { get; set; }
         [JsonProperty("serviceStars")]
         [JsonRequired]
-        public ServiceStars ServiceStars { get; set; }
+        public KitValue<int> ServiceStars { get; set; }
         [JsonProperty("deaths")]
         [JsonRequired]
         public int Deaths { get; set; }

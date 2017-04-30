@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFramework>netstandard1.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,22 +2,22 @@ using Newtonsoft.Json;
 
 namespace Battlelog.Bf4
 {
-    public class KitTimesInPercentage
+    public class KitValue<T>
     {
         [JsonProperty("8")]
         [JsonRequired]
-        public double Recon { get; set; }
+        public T Recon { get; set; }
         [JsonProperty("1")]
         [JsonRequired]
-        public double Assault { get; set; }
+        public T Assault { get; set; }
         [JsonProperty("2")]
         [JsonRequired]
-        public double Engineer { get; set; }
+        public T Engineer { get; set; }
         [JsonProperty("2048")]
         [JsonRequired]
-        public double Commander { get; set; }
+        public T Commander { get; set; }
         [JsonProperty("32")]
         [JsonRequired]
-        public double Support { get; set; }
+        public T Support { get; set; }
     }
 }

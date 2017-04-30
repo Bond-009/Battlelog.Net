@@ -3,7 +3,7 @@ using System;
 
 namespace Battlelog.Bf4
 {
-    public class KitTimes
+    public class KitTimes : KitValue<TimeSpan>
     {
         [JsonProperty("8")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]

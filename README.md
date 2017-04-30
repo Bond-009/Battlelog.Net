@@ -1,5 +1,10 @@
 # Battlelog.Net
 
+[![travis-ci Build Status](https://api.travis-ci.org/Bond-009/Battlelog.Net.svg?branch=master)](https://travis-ci.org/Bond-009/OpenWeather.Net)
+[![Myget](https://img.shields.io/myget/bond_009/v/Battlelog.Net.svg)](https://www.myget.org/feed/Packages/bond_009)
+
+A .NET wrapper for battlelog.
+
 ## Nuget feed
 
 NuGet V3 feed URL (Visual Studio 2015+): https://www.myget.org/F/bond_009/api/v3/index.json
