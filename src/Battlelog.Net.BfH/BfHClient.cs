@@ -11,20 +11,24 @@ namespace Battlelog.BfH
 {
     public class BfHClient : IDisposable
     {
-        HttpClient httpClient = new HttpClient();
+        private HttpClient _httpClient = new HttpClient();
+        private bool _disposed = false;
 
-        public BfHClient() => httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
+        public BfHClient()
+            => _httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
 
         /// <summary>
         /// Returns the Persona ID from the player.
         /// </summary>
         /// <param name="playername">the players name</param>
+        /// <param name="platform">the platform</param>
+        /// <param name="platformName">the players platform specific name</param>
         /// <returns>Returns the Persona ID from the player and null if the player wasn't found.</returns>
-        public async Task<long?> GetPersonaID(string playername)
+        public async Task<long?> GetPersonaID(string playername, Platform platform = Platform.PC, string platformName = null)
         {
             // Extract the persona id
-            Match pid = Regex.Match(await httpClient.GetStringAsync("/bfh/user/" + playername),
-                $@"bfh/agent/{playername}/stats/(?<id>\d+)",
+            Match pid = Regex.Match(await _httpClient.GetStringAsync("/bfh/user/" + playername),
+                $@"/bfh/agent/{platformName ?? playername}/stats/(?<id>\d+)/{platform}/",
                 RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
             if (!pid.Success) return null;
@@ -36,25 +40,37 @@ namespace Battlelog.BfH
         /// Returns detailed stats about a player.
         /// </summary>
         /// <returns>Returns detailed stats about a player.</returns>
-        public async Task<DetailedStats> GetDetailedStatsAsync(Platform platform, long PlayerID)
-        {
-            return await await Task.Factory.StartNew(async () =>
-                JsonConvert.DeserializeObject<Response<DetailedStats>>(
+        public async Task<DetailedStats> GetDetailedStatsAsync(long PlayerID, Platform platform = Platform.PC)
+            => JsonConvert.DeserializeObject<Response<DetailedStats>>(
                     await GetStringAsync(Endpoints.DetailedStats,
                         PlayerID.ToString(),
                         ((int)platform).ToString()
-            )).Data);
-        }
+                )).Data;
 
         /// <summary>
         /// Releases the unmanaged resources and disposes of the managed resources used.
         /// </summary>
         public void Dispose()
         {
-            httpClient.Dispose();
+            Dispose(true);
+
+            GC.SuppressFinalize(this);
         }
 
-        private async Task<string> GetStringAsync(string endpoint, params string[] parameters)
-            => await httpClient.GetStringAsync(endpoint + "/" + string.Join("/", parameters));
+        protected virtual void Dispose(bool disposing)
+        {
+            if(_disposed) return;
+
+            if (disposing)
+            {
+                _httpClient.Dispose();
+                _httpClient = null;
+            }
+
+            _disposed = true;
+        }
+
+        private Task<string> GetStringAsync(string endpoint, params string[] parameters)
+            => _httpClient.GetStringAsync(endpoint + "/" + string.Join("/", parameters));
     }
 }
