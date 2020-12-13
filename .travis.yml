@@ -1,8 +1,0 @@
-language: csharp
-dist: trusty
-sudo: false
-solution: Battlelog.Net.sln
-mono: none
-dotnet: 1.0.1
-script:
-  - ./CIbuild.sh --quiet verify
