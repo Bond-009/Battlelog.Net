@@ -1,20 +1,19 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.Bf3
 {
     public class KitValue<T>
     {
-        [JsonProperty("8")]
-        [JsonRequired]
+        [JsonPropertyName("8")]
         public T Recon { get; set; }
-        [JsonProperty("1")]
-        [JsonRequired]
+
+        [JsonPropertyName("1")]
         public T Assault { get; set; }
-        [JsonProperty("2")]
-        [JsonRequired]
+
+        [JsonPropertyName("2")]
         public T Engineer { get; set; }
-        [JsonProperty("32")]
-        [JsonRequired]
+
+        [JsonPropertyName("32")]
         public T Support { get; set; }
     }
 }

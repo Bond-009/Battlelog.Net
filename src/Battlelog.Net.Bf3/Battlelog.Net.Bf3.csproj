@@ -8,12 +8,10 @@
 
   <PropertyGroup Label="Configuration">
     <AssemblyName>Battlelog.Net.Bf3</AssemblyName>
-    <DocumentationFile>bin\Release\Battlelog.Net.Bf3.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

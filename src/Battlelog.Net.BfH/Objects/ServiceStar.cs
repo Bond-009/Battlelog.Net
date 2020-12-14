@@ -1,32 +1,24 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.BfH
 {
     public class ServiceStar<T>
     {
-        [JsonProperty("serviceStars")]
-        [JsonRequired]
+        [JsonPropertyName("serviceStars")]
         public int ServiceStars { get; set; }
-        [JsonProperty("serviceStarsProgress")]
-        [JsonRequired]
+        [JsonPropertyName("serviceStarsProgress")]
         public double ServiceStarsProgress { get; set; }
-        [JsonProperty("actualValue")]
-        [JsonRequired]
+        [JsonPropertyName("actualValue")]
         public int ActualValue { get; set; }
-        [JsonProperty("progressCodeNeeded")]
-        [JsonRequired]
+        [JsonPropertyName("progressCodeNeeded")]
         public string ProgressCodeNeeded { get; set; }
-        [JsonProperty("codeNeeded")]
-        [JsonRequired]
+        [JsonPropertyName("codeNeeded")]
         public string CodeNeeded { get; set; }
-        [JsonProperty("tier")]
-        [JsonRequired]
+        [JsonPropertyName("tier")]
         public string Tier { get; set; }
-        [JsonProperty("valueNeeded")]
-        [JsonRequired]
+        [JsonPropertyName("valueNeeded")]
         public int ValueNeeded { get; set; }
-        [JsonProperty("name")]
-        [JsonRequired]
+        [JsonPropertyName("name")]
         public T Name { get; set; }
     }
 }

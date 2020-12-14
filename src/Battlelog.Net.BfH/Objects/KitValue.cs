@@ -1,23 +1,18 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.BfH
 {
     public class KitValue<T>
     {
-        [JsonProperty("4096")]
-        [JsonRequired]
+        [JsonPropertyName("4096")]
         public T Enforcer { get; set; }
-        [JsonProperty("8192")]
-        [JsonRequired]
+        [JsonPropertyName("8192")]
         public T Mechanic { get; set; }
-        [JsonProperty("32768")]
-        [JsonRequired]
+        [JsonPropertyName("32768")]
         public T Professional { get; set; }
-        [JsonProperty("16384")]
-        [JsonRequired]
+        [JsonPropertyName("16384")]
         public T Operator { get; set; }
-        [JsonProperty("2048")]
-        [JsonRequired]
+        [JsonPropertyName("2048")]
         public T Hacker { get; set; }
     }
 }

@@ -1,48 +1,36 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.Bf4
 {
     public class GameModesScore
     {
-        [JsonProperty("32")]
-        [JsonRequired]
+        [JsonPropertyName("32")]
         public int TeamDeathmatch { get; set; }
-        [JsonProperty("1")]
-        [JsonRequired]
+        [JsonPropertyName("1")]
         public int Conquest { get; set; }
-        [JsonProperty("2")]
-        [JsonRequired]
+        [JsonPropertyName("2")]
         public int Rush { get; set; }
         // (33554432) use 134217728 for CarrierAssault
         // (68719476736) use 1 for Conquest score
         // (64) use 1 for Conquest score
-        [JsonProperty("1024")]
-        [JsonRequired]
+        [JsonPropertyName("1024")]
         public int Domination { get; set; }
-        [JsonProperty("524288")]
-        [JsonRequired]
+        [JsonPropertyName("524288")]
         public int CaptureTheFlag { get; set; }
-        [JsonProperty("134217728")]
-        [JsonRequired]
+        [JsonPropertyName("134217728")]
         public int CarrierAssault { get; set; }
-        [JsonProperty("2097152")]
-        [JsonRequired]
+        [JsonPropertyName("2097152")]
         public int Obliteration { get; set; }
-        [JsonProperty("8")]
-        [JsonRequired]
+        [JsonPropertyName("8")]
         public int SquadDeathmatch { get; set; }
-        [JsonProperty("8388608")]
-        [JsonRequired]
+        [JsonPropertyName("8388608")]
         public int AirSuperiority { get; set; }
-        [JsonProperty("512")]
-        [JsonRequired]
+        [JsonPropertyName("512")]
         public int GunMaster { get; set; }
         // (137438953472) use 2097152 for Obliteration
-        [JsonProperty("34359738368")]
-        [JsonRequired]
+        [JsonPropertyName("34359738368")]
         public int ChainLink { get; set; }
-        [JsonProperty("16777216")]
-        [JsonRequired]
+        [JsonPropertyName("16777216")]
         public int Defuse { get; set; }
         // (67108864) use 134217728 for CarrierAssault
     }

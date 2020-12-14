@@ -1,23 +1,18 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.Bf4
 {
     public class ServiceStar
     {
-        [JsonProperty("serviceStars")]
-        [JsonRequired]
+        [JsonPropertyName("serviceStars")]
         public int ServiceStars { get; set; }
-        [JsonProperty("serviceStarsProgress")]
-        [JsonRequired]
+        [JsonPropertyName("serviceStarsProgress")]
         public double ServiceStarsProgress { get; set; }
-        [JsonProperty("actualValue")]
-        [JsonRequired]
+        [JsonPropertyName("actualValue")]
         public int ActualValue { get; set; }
-        [JsonProperty("codeNeeded")]
-        [JsonRequired]
+        [JsonPropertyName("codeNeeded")]
         public string CodeNeeded { get; set; }
-        [JsonProperty("valueNeeded")]
-        [JsonRequired]
+        [JsonPropertyName("valueNeeded")]
         public int ValueNeeded { get; set; }
     }
 }

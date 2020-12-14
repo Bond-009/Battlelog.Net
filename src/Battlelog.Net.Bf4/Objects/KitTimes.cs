@@ -1,29 +1,24 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using System;
 
 namespace Battlelog.Bf4
 {
     public class KitTimes : KitValue<TimeSpan>
     {
-        [JsonProperty("8")]
+        [JsonPropertyName("8")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
         public TimeSpan Recon { get; set; }
-        [JsonProperty("1")]
+        [JsonPropertyName("1")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
         public TimeSpan Assault { get; set; }
-        [JsonProperty("2")]
+        [JsonPropertyName("2")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
         public TimeSpan Engineer { get; set; }
-        [JsonProperty("2048")]
+        [JsonPropertyName("2048")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
         public TimeSpan Commander { get; set; }
-        [JsonProperty("32")]
+        [JsonPropertyName("32")]
         [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
         public TimeSpan Support { get; set; }
     }
 }
