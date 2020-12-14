@@ -8,16 +8,10 @@
 
   <PropertyGroup Label="Configuration">
     <AssemblyName>Battlelog.Net</AssemblyName>
-    <DocumentationFile>bin\Release\Battlelog.Net.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-  </ItemGroup>
 
 </Project>

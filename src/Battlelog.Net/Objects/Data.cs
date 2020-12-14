@@ -1,17 +1,16 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog
 {
     public class Data
     {
-        [JsonProperty("personaId")]
-        [JsonRequired]
+        [JsonPropertyName("personaId")]
         public long PersonaID { get; set; }
-        [JsonProperty("platformInt")]
-        [JsonRequired]
+
+        [JsonPropertyName("platformInt")]
         public int PlatformInt { get; set; }
-        [JsonProperty("statsTemplate")]
-        [JsonRequired]
+
+        [JsonPropertyName("statsTemplate")]
         public string StatsTemplate { get; set; }
     }
 }

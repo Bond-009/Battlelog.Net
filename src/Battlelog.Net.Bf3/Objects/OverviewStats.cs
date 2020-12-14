@@ -1,149 +1,147 @@
-using Newtonsoft.Json;
+
 using System;
-using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.Bf3
 {
     public class OverviewStats
     {
-        [JsonProperty("serviceStarsProgress")]
-        [JsonRequired]
+        [JsonPropertyName("serviceStarsProgress")]
         public KitValue<double> ServiceStarsProgress { get; set; }
-        [JsonProperty("vehiclesDestroyed")]
-        [JsonRequired]
+
+        [JsonPropertyName("vehiclesDestroyed")]
         public int VehiclesDestroyed { get; set; }
-        [JsonProperty("rank")]
-        [JsonRequired]
+
+        [JsonPropertyName("rank")]
         public int Rank { get; set; }
-        [JsonProperty("sc_vehicle")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_vehicle")]
         public int VehicleScore { get; set; }
-        [JsonProperty("sc_team")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_team")]
         public int TeamScore { get; set; }
-        [JsonProperty("nemesisKills")]
-        [JsonRequired]
+
+        [JsonPropertyName("nemesisKills")]
         public int NemesisKills { get; set; }
-        [JsonProperty("heals")]
-        [JsonRequired]
+
+        [JsonPropertyName("heals")]
         public int Heals { get; set; }
-        [JsonProperty("longestHeadshot")]
-        [JsonRequired]
+
+        [JsonPropertyName("longestHeadshot")]
         public double LongestHeadshot { get; set; }
-        [JsonProperty("elo")]
-        [JsonRequired]
+
+        [JsonPropertyName("elo")]
         public double Elo { get; set; }
-        [JsonProperty("sc_unlock")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_unlock")]
         public int UnlockScore { get; set; }
-        [JsonProperty("mcomDefendKills")]
-        [JsonRequired]
+
+        [JsonPropertyName("mcomDefendKills")]
         public int McomDefendKills { get; set; }
-        [JsonProperty("wlRatio")]
-        [JsonRequired]
+
+        [JsonPropertyName("wlRatio")]
         public double WLRatio { get; set; }
-        [JsonProperty("sc_award")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_award")]
         public double AwardScore { get; set; }
-        [JsonProperty("vehiclesDestroyedAssists")]
-        [JsonRequired]
+
+        [JsonPropertyName("vehiclesDestroyedAssists")]
         public int VehiclesDestroyedAssists { get; set; }
-        [JsonProperty("revives")]
-        [JsonRequired]
+
+        [JsonPropertyName("revives")]
         public int Revives { get; set; }
-        [JsonProperty("kills")]
-        [JsonRequired]
+
+        [JsonPropertyName("kills")]
         public int Kills { get; set; }
-        [JsonProperty("sc_bonus")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_bonus")]
         public int BonusScore { get; set; }
-        [JsonProperty("flagDefend")]
-        [JsonRequired]
+
+        [JsonPropertyName("flagDefend")]
         public int FlagsDefended { get; set; }
-        [JsonProperty("numWins")]
-        [JsonRequired]
+
+        [JsonPropertyName("numWins")]
         public int Wins { get; set; }
-        [JsonProperty("sc_objective")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_objective")]
         public int ObjectiveScore { get; set; }
+
         // TODO: vehicleScores
-        [JsonProperty("quitPercentage")]
-        [JsonRequired]
+        [JsonPropertyName("quitPercentage")]
         public double QuitPercentage { get; set; }
-        [JsonProperty("sc_squad")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_squad")]
         public int SquadScore { get; set; }
-        [JsonProperty("flagCaptures")]
-        [JsonRequired]
+
+        [JsonPropertyName("flagCaptures")]
         public int FlagCaptures { get; set; }
-        [JsonProperty("serviceStars")]
-        [JsonRequired]
+
+        [JsonPropertyName("serviceStars")]
         public KitValue<double> ServiceStars { get; set; }
-        [JsonProperty("dogtagsTaken")]
-        [JsonRequired]
+
+        [JsonPropertyName("dogtagsTaken")]
         public int DogtagsTaken { get; set; }
-        [JsonProperty("deaths")]
-        [JsonRequired]
+
+        [JsonPropertyName("deaths")]
         public int Deaths { get; set; }
-        [JsonProperty("killAssists")]
-        [JsonRequired]
+
+        [JsonPropertyName("killAssists")]
         public int KillAssists { get; set; }
-        [JsonProperty("resupplies")]
-        [JsonRequired]
+
+        [JsonPropertyName("resupplies")]
         public int Resupplies { get; set; }
+
         // (totalscore) use score fot Score
-        [JsonProperty("repairs")]
-        [JsonRequired]
+        [JsonPropertyName("repairs")]
         public int Repairs { get; set; }
-        [JsonProperty("shotsFired")]
-        [JsonRequired]
+
+        [JsonPropertyName("shotsFired")]
         public int ShotsFired { get; set; }
-        [JsonProperty("avengerKills")]
-        [JsonRequired]
+
+        [JsonPropertyName("avengerKills")]
         public int AvengerKills { get; set; }
-        [JsonProperty("totalscore")]
-        [JsonRequired]
+
+        [JsonPropertyName("totalscore")]
         public int Score { get; set; }
-        [JsonProperty("kitTimes")]
-        [JsonRequired]
-        public KitTimes KitTimes { get; set; }
-        [JsonProperty("kitTimesInPercentage")]
-        [JsonRequired]
+
+        [JsonPropertyName("kitTimes")]
+        public KitValue<TimeSpan> KitTimes { get; set; }
+
+        [JsonPropertyName("kitTimesInPercentage")]
         public KitValue<double> KitTimesInPercentage { get; set; }
+
         // (rankScore) use score for Score
-        [JsonProperty("accuracy")]
-        [JsonRequired]
+        [JsonPropertyName("accuracy")]
         public double Accuracy { get; set; }
-        [JsonProperty("timePlayed")]
-        [JsonConverter(typeof(UnixTimeSpanConverter))]
-        [JsonRequired]
+
+        [JsonPropertyName("timePlayed")]
         public TimeSpan TimePlayed { get; set; }
-        [JsonProperty("kitScores")]
-        [JsonRequired]
+
+        [JsonPropertyName("kitScores")]
         public KitValue<int> KitScores { get; set; }
-        [JsonProperty("suppressionAssists")]
-        [JsonRequired]
+
+        [JsonPropertyName("suppressionAssists")]
         public int SuppressionAssists { get; set; }
-        [JsonProperty("scorePerMinute")]
-        [JsonRequired]
+
+        [JsonPropertyName("scorePerMinute")]
         public int ScorePerMinute { get; set; }
-        [JsonProperty("combatScore")]
-        [JsonRequired]
+
+        [JsonPropertyName("combatScore")]
         public int CombatScore { get; set; }
-        [JsonProperty("numRounds")]
-        [JsonRequired]
+
+        [JsonPropertyName("numRounds")]
         public int Rounds { get; set; }
-        [JsonProperty("shotsHit")]
-        [JsonRequired]
+
+        [JsonPropertyName("shotsHit")]
         public int ShotsHit { get; set; }
-        [JsonProperty("numLosses")]
-        [JsonRequired]
+
+        [JsonPropertyName("numLosses")]
         public int Losses { get; set; }
-        [JsonProperty("sc_general")]
-        [JsonRequired]
+
+        [JsonPropertyName("sc_general")]
         public int GeneralScore { get; set; }
-        [JsonProperty("saviorKills")]
-        [JsonRequired]
+
+        [JsonPropertyName("saviorKills")]
         public int SaviorKills { get; set; }
     }
 }

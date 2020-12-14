@@ -1,11 +1,10 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog.BfH
 {
     public class DetailedStats : Data
     {
-        [JsonProperty("generalStats")]
-        [JsonRequired]
+        [JsonPropertyName("generalStats")]
         public GeneralStats GeneralStats { get; set; }
     }
 }

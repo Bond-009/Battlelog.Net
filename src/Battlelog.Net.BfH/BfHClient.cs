@@ -1,21 +1,30 @@
-﻿using Battlelog;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Globalization;
+using System.IO;
 using System.Net.Http;
+using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using Battlelog.Json;
 
 namespace Battlelog.BfH
 {
     public class BfHClient : IDisposable
     {
-        private HttpClient _httpClient = new HttpClient();
+        private readonly HttpClient _httpClient;
+        private readonly JsonSerializerOptions _jsonOptions;
         private bool _disposed = false;
 
         public BfHClient()
-            => _httpClient.BaseAddress = new Uri("https://battlelog.battlefield.com");
+        {
+            _httpClient = new HttpClient()
+            {
+                BaseAddress = new Uri("https://battlelog.battlefield.com")
+            };
+
+            _jsonOptions = JsonDefaults.GetOptions();
+        }
 
         /// <summary>
         /// Returns the Persona ID from the player.
@@ -31,21 +40,29 @@ namespace Battlelog.BfH
                 $@"/bfh/agent/{platformName ?? playername}/stats/(?<id>\d+)/{platform}/",
                 RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
-            if (!pid.Success) return null;
+            if (pid.Success
+                && long.TryParse(pid.Groups["id"].Value.AsSpan().Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out long value))
+            {
+                return value;
+            }
 
-            return long.Parse(pid.Groups["id"].Value.Trim());
+            return null;
         }
 
         /// <summary>
         /// Returns detailed stats about a player.
         /// </summary>
         /// <returns>Returns detailed stats about a player.</returns>
-        public async Task<DetailedStats> GetDetailedStatsAsync(long PlayerID, Platform platform = Platform.PC)
-            => JsonConvert.DeserializeObject<Response<DetailedStats>>(
-                    await GetStringAsync(Endpoints.DetailedStats,
-                        PlayerID.ToString(),
-                        ((int)platform).ToString()
-                )).Data;
+        public async Task<DetailedStats> GetDetailedStatsAsync(long playerId, Platform platform = Platform.PC, CancellationToken cancellationToken = default)
+        {
+            using var stream = await GetStreamAsync(
+                Endpoints.DetailedStats,
+                cancellationToken,
+                playerId.ToString(),
+                ((int)platform).ToString()).ConfigureAwait(false);
+            var res = await JsonSerializer.DeserializeAsync<Response<DetailedStats>>(stream, _jsonOptions, cancellationToken).ConfigureAwait(false);
+            return res.Data;
+        }
 
         /// <summary>
         /// Releases the unmanaged resources and disposes of the managed resources used.
@@ -64,13 +81,12 @@ namespace Battlelog.BfH
             if (disposing)
             {
                 _httpClient.Dispose();
-                _httpClient = null;
             }
 
             _disposed = true;
         }
 
-        private Task<string> GetStringAsync(string endpoint, params string[] parameters)
-            => _httpClient.GetStringAsync(endpoint + "/" + string.Join("/", parameters));
+        private Task<Stream> GetStreamAsync(string endpoint, CancellationToken cancellationToken, params string[] parameters)
+            => _httpClient.GetStreamAsync(endpoint + "/" + string.Join('/', parameters), cancellationToken);
     }
 }

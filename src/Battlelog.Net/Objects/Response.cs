@@ -1,17 +1,16 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Battlelog
 {
     public class Response<T> where T: Data
     {
-        [JsonProperty("type")]
-        [JsonRequired]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
-        [JsonProperty("message")]
-        [JsonRequired]
+
+        [JsonPropertyName("message")]
         public string Message { get; set; }
-        [JsonProperty("data")]
-        [JsonRequired]
+
+        [JsonPropertyName("data")]
         public T Data { get; set; }
     }
 }
