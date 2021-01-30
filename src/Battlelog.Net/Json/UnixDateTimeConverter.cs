@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Battlelog
+namespace Battlelog.Json
 {
     public class UnixDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
     {

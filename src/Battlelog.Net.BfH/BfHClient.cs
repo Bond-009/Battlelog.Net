@@ -2,9 +2,11 @@
 using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Battlelog.BfH
@@ -70,7 +72,7 @@ namespace Battlelog.BfH
             _disposed = true;
         }
 
-        private Task<string> GetStringAsync(string endpoint, params string[] parameters)
-            => _httpClient.GetStringAsync(endpoint + "/" + string.Join("/", parameters));
+        private Task<Stream> GetStreamAsync(string endpoint, CancellationToken cancellationToken, params string[] parameters)
+            => _httpClient.GetStreamAsync(endpoint + "/" + string.Join('/', parameters), cancellationToken);
     }
 }
