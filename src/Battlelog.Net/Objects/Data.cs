@@ -8,7 +8,7 @@ namespace Battlelog
         public long PersonaID { get; set; }
 
         [JsonPropertyName("platformInt")]
-        public int PlatformInt { get; set; }
+        public Platform Platform { get; set; }
 
         [JsonPropertyName("statsTemplate")]
         public string StatsTemplate { get; set; }

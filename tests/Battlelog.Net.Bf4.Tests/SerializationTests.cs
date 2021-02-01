@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -23,6 +22,8 @@ namespace Battlelog.Bf4.Tests
                 Assert.NotNull(res.Data);
                 Assert.Equal("OK", res.Message);
                 Assert.Equal("success", res.Type);
+                Assert.Equal(Platform.PC, res.Data.Platform);
+                Assert.Equal("profile.warsawdetailedstatspopulate", res.Data.StatsTemplate);
             }
         }
     }
