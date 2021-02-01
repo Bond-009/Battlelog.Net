@@ -1,11 +1,11 @@
 # Battlelog.Net
 
-[![Myget](https://img.shields.io/myget/bond_009/v/Battlelog.Net.svg)](https://www.myget.org/feed/Packages/bond_009)
+![.NET][github-actions-badge] [![codecov][codecov-badge]][codecov-page] [![NuGet][nuget-badge]][nuget-page]
 
 A .NET wrapper for battlelog.
 
-## Nuget feed
-
-NuGet V3 feed URL (Visual Studio 2015+): https://www.myget.org/F/bond_009/api/v3/index.json
-
-NuGet V2 feed URL (Visual Studio 2012+): https://www.myget.org/F/bond_009/api/v2
+[github-actions-badge]: https://github.com/Bond-009/Battlelog.Net/workflows/.NET/badge.svg
+[codecov-badge]: https://codecov.io/gh/Bond-009/Battlelog.Net/branch/master/graph/badge.svg?token=12w4Le8yt6
+[codecov-page]: https://codecov.io/gh/Bond-009/Battlelog.Net
+[nuget-badge]: https://img.shields.io/nuget/v/Battlelog.Net
+[nuget-page]: https://www.nuget.org/packages/Battlelog.Net
