@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Bond_009</Authors>
     <PackageId>Battlelog.Net.BfH</PackageId>
-    <Version>0.1.3</Version>
+    <Version>0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Label="Configuration">
