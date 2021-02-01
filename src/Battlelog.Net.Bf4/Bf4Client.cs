@@ -56,7 +56,7 @@ namespace Battlelog.Bf4
         /// Returns detailed stats about a player.
         /// </summary>
         /// <returns>Returns detailed stats about a player.</returns>
-        public async Task<DetailedStats> GetStatsAsync(long playerID, Platform platform = Platform.PC, CancellationToken cancellationToken = default)
+        public async Task<DetailedStats> GetDetailedStatsAsync(long playerID, Platform platform = Platform.PC, CancellationToken cancellationToken = default)
         {
             using var stream = await GetStreamAsync(
                 Endpoints.DetailedStats,
