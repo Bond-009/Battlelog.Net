@@ -17,7 +17,7 @@ namespace Battlelog.Bf4.Tests
         {
             using (Stream stream = File.OpenRead("Test Data/" + resource))
             {
-                var res = await JsonSerializer.DeserializeAsync<Response<DetailedStats>>(stream, _jsonOptions).ConfigureAwait(false);
+                var res = await JsonSerializer.DeserializeAsync<Response<DetailedStats>>(stream, _jsonOptions);
                 Assert.NotNull(res);
                 Assert.NotNull(res.Data);
                 Assert.Equal("OK", res.Message);

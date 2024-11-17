@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Bond_009</Authors>
     <PackageId>Battlelog.Net.Bf4</PackageId>
-    <Version>0.2.1</Version>
+    <Version>0.3.0</Version>
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Bond-009/Battlelog.Net</RepositoryUrl>
   </PropertyGroup>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

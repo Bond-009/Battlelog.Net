@@ -16,7 +16,7 @@ namespace Battlelog.Bf3.Tests
         {
             using (Stream stream = File.OpenRead("Test Data/" + resource))
             {
-                var res = await JsonSerializer.DeserializeAsync<Response<Stats>>(stream, _jsonOptions).ConfigureAwait(false);
+                var res = await JsonSerializer.DeserializeAsync<Response<Stats>>(stream, _jsonOptions);
                 Assert.NotNull(res);
                 Assert.NotNull(res.Data);
                 Assert.Equal("OK", res.Message);
